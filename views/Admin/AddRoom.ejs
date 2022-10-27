@@ -1,0 +1,58 @@
+<%- include('../partials/Admin/header.ejs') %>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="container-sm mt-lg-5">
+                <!-- general form elements -->
+                <div class="card card-gray-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Room</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    
+                <form method="post">
+                    
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">No. of Room</label>
+                            <input type="text" class="form-control" id="" name="no_of_room" placeholder="Enter No. of room">
+                        </div>
+                        <h1>
+                            
+                        </h1>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Select Room Type</label>
+                            
+                            <select name="room_type" class="form-control" id="cars">
+                                
+                                <% var i = 1 %>
+                                <% data.forEach((item)=>{ %>
+                                    <option value="<%= item.room_type %>"><%= item.room_type %> </option>
+                                <% }) %>
+                              </select>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-dark">Add</button>
+                    </div>
+
+                </form>
+                    
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<%- include('../partials/Admin/footer.ejs') %>

@@ -1,0 +1,64 @@
+<%- include('../partials/Admin/header.ejs') %>
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="container-sm mt-lg-5">
+                <!-- general form elements -->
+                <div class="card card-gray-dark">
+                    <div class="card-header">
+                        <h3 class="card-title">Add Room Category</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    
+                <form  method="post" enctype="multipart/form-data">
+                    
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Room type</label>
+                            <input type="text" class="form-control" id="" name="room_type" placeholder="Enter room type">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" name="room_photo" class="custom-file-input" id="">
+                                <label class="custom-file-label" for="">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Room price</label>
+                            <input type="text" class="form-control" name="room_price" id="" placeholder="Enter price">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter...." name="room_desc"></textarea>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-dark">Add</button>
+                    </div>
+                    <span id="status"></span>
+                </form>
+                    
+                </div>
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<%- include('../partials/Admin/footer.ejs') %>

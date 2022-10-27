@@ -1,0 +1,72 @@
+<%- include('../partials/Admin/header.ejs') %>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Room Categories</h3>
+                    </div>
+                    
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Available Rooms</th>
+                                    <th>Room photo</th>
+                                    <th>Room type</th>
+                                    
+                                    <th>Action</th>
+                                </tr>
+
+                                <% var i = 1 %>
+                                <% data.forEach((item)=>{ %>
+                                    <tr>
+                                        <td><%= i++ %></td>
+                                        <td><%= item.no_of_room %></td>
+                                        <td><img style="width: auto; height: 150px;" src='/uploads/<%= item.room_photo %>' alt="roomtype"></td>
+                                        
+                                        <td><%= item.room_type %></td>
+                                        <td>
+                                            <!-- <form action="/Admin/editroomtype/<%= item._id %>" method="get">
+                                                <button type="submit"> -->
+                                                    <a href="/Admin/editroomtype/<%= item._id %>"><i class="fas fa-edit"></i></a>
+                                                <!-- </button>
+                                            </form> -->
+                                            <!-- <form action="/Admin/editroomtype/<%= item._id %>" method="post">
+                                                <button type="submit">
+                                                    <i class="fas fa-delete"></i>
+                                                </button>
+                                            </form> -->
+                                            <form action="/Admin/deleteroomtype/<%= item._id %>" method="post" class="inline" id="myform">
+                                                <button ><i class="fas fa-trash" style="color:red ;"></i></button>
+                                            </form>
+                                            <!-- <a href="#" onclick="document.getElementById('myform').submit(); return false"><i class="fas fa-trash" style="color:red ;"></i></a> -->
+                                        </td>
+                                    </tr>
+                                <% }) %>
+
+                                <tfoot>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Available Rooms</th>
+                                        <th>Room photo</th>
+                                        <th>Room type</th>
+                                        
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    <!-- /.card-body -->
+                </div>
+                
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<%- include('../partials/Admin/footer.ejs') %>

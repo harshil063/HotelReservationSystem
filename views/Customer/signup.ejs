@@ -1,0 +1,44 @@
+<%- include('../partials/Customer/header.ejs') %>
+<div class="container">
+    <div class="col-lg-12 col-md-6 mb-5">
+        <h1 class=" mb-4 mt-3 " style="text-align: center;">SignUp</h1>
+       
+        <p class="alert alert-danger" style="width:280px;"></p>
+        
+        
+        <form action="" method="post">
+            First Name: <div class="form-group">
+                <input type="text" class="form-control border-0" name="fname" placeholder="Your First Name" required="required" />
+             </div>
+            Last Name: <div class="form-group">
+                <input type="text" class="form-control border-0" name="lname" placeholder="Your Last Name" required="required" />
+             </div>
+             Email:<div class="form-group">
+                <input type="email" class="form-control border-0" name="email" placeholder="Your Email" required="required" />
+             </div>
+             Contact:<div class="form-group">
+                <input type="text" class="form-control border-0" name="contact" placeholder="Your Contact" required="required" />
+            </div>
+            Aadhar No: :<div class="form-group">
+                <input type="text" class="form-control border-0" name="aadharcardno" placeholder="Your Aadhar No" required="required" />
+            </div>
+            City:<div class="form-group">
+                <input type="text" class="form-control border-0" name="city" placeholder="Your City" required="required" />
+             </div>
+             Pincode:<div class="form-group">
+                <input type="text" class="form-control border-0" name="pincode" placeholder="Your Pincode" required="required" />
+            </div>
+            Password: <div class="form-group">
+                <input type="password" class="form-control border-0" name="password" placeholder="Your Password" required="required" />
+            </div>
+            Confirm Password: <div class="form-group">
+                <input type="password" class="form-control border-0" name="cpassword" placeholder="Confirm Password" required="required" />
+            </div>
+            <div>
+                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Sign-Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/Customer/footer.ejs') %>
