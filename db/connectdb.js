@@ -11,14 +11,6 @@ const connectDB = async (DATABASE_URL)=>{
     }
 }
 
-// connectDB.getCollection('roomtypes').aggregate([{
-//     $lookup:
-//     {
-//         from:"rooms",
-//         localField:"_id",
-//         foreignField:"_id",
-//         as:"room_type"
-//     }
-// }])
+
 
 export default connectDB;
