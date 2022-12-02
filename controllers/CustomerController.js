@@ -60,6 +60,7 @@ class CustomerController{
                     console.log(result.email);
                     // console.log(req.session);
                     hellooo
+                    console.log("test");
                     // console.log(req.session.userid);
                     // var session=req.session;
                     
