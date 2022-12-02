@@ -61,6 +61,7 @@ class CustomerController{
                     // console.log(req.session);
                     hellooo
                     console.log("test");
+                    console.log("test2");
                     // console.log(req.session.userid);
                     // var session=req.session;
                     
