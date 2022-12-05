@@ -7,4 +7,7 @@ router.post('/signup',CustomerController.CreateCustDoc)
 router.get('/login',CustomerController.loginpage)
 router.post('/login',CustomerController.verifyLogin)
 router.get('/ViewRoom',CustomerController.ViewRoom)
+router.get('/BookRoom/:roomtype',CustomerController.BookRoom)
+router.get('/BookRoom',CustomerController.BookRoom)
+router.post('/BookRoom/:roomtype',CustomerController.CreateBookRoomDoc)
 export default router;

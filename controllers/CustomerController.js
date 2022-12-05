@@ -50,7 +50,6 @@ class CustomerController{
         res.render("customer/login");
     }
     static verifyLogin = async(req,res)=>{
-        req.session.userid = "test";
         try{    
             const {email,password} = req.body
             const result = await CustomerModel.findOne({email:email})
@@ -59,13 +58,10 @@ class CustomerController{
                 if(result.email == email && isMatch){
                     console.log(result.email);
                     // console.log(req.session);
-                    console.log("test");
-                    console.log("test2");
-                    // console.log(req.session.userid);
+                    req.session.userid = result.email;
                     // var session=req.session;
-                    
 
-                    // console.log(req.session);
+                    console.log(req.session);
                     console.log("welcome click to logout");
                     res.redirect("/customer");
                 }else{
@@ -84,7 +80,6 @@ class CustomerController{
         try{
             const result = await roomtypeModel.find()
             
-            console.log(result.room_type);
             res.render("Customer/ViewRoom",{data:result})
         }
         catch(error){
@@ -96,9 +91,12 @@ class CustomerController{
         try{
             const roomtype = req.params.roomtype;
             const result = await roomtypeModel.findOne({room_type:roomtype});
+
+            const custresult = await CustomerModel.findOne({email:req.session.userid});
+            console.log(custresult);
             console.log(result);
-            res.render("Customer/BookRoom",{data:result})
-            // res.render("Customer/BookRoom",{data:result})
+            res.render("Customer/BookRoom",{data:result,custdata:custresult})
+            // res.render("Customer/BookRoom")
         }
         catch(error){
             console.log(error);

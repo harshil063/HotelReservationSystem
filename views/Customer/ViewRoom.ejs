@@ -43,9 +43,9 @@
                 <p class="alert alert-danger" style="width:280px;">@ViewBag.emptyerr</p>
             }*@ -->
             <div class="row">
-                <!-- @foreach (var item in Model)
-                { -->
-                    <div class="col-sm-4 product-card">
+                    <% var i = 1 %>
+                    <% data.forEach((item)=>{ %>
+                    <!-- <div class="col-sm-4 product-card">
                         <div class="badge">POPULAR</div>
                         <div class="product-tumb">
                             <img src="/uploads/carousel-1.jpg"  alt="pic">
@@ -53,7 +53,7 @@
                         <div class="product-details">
                             <div>
                                 <div class="product-catagory">
-                                    <h4><a href="">Room type </a></h4>
+                                    <h4><a href="">d<%= item.no_of_room %> </a></h4>
                                 </div>
                             </div>
                             <div>
@@ -66,8 +66,29 @@
                                 
                             </div>
                         </div>
+                    </div> -->
+
+
+                    <div class="col-sm-4 mt-4 uk-card uk-card-default uk-card-medium">
+                        <div class="uk-card-media-top uk-position-relative">
+                            <img src="/uploads/<%= item.room_photo %>" height="200px" width="350px"  alt="roomimg">
+                            <div class="impx-overlay light overlay-squared padding-xwide"></div>
+                        </div>
+                        <div class="uk-card-body impx-padding-medium">
+                            <h4 class="mt-4 uk-card-title uk-margin-remove-bottom" style="text-align: center;"><%= item.room_type %></h4>
+                            <div>
+                                <div class="product-catagory">
+                                    <h4 style="text-align: center;"><a href="" ><%= item.room_price %> / Night </a></h4>
+                                </div>
+                            </div>
+                            <p> <%= item.room_desc %></p>
+                            
+                            <div class="product-bottom-details">
+                                <a href="BookRoom/<%= item.room_type %>" class="btn btn-outline-primary btn-block">Book Now <i class="fas fa-eye"></i> </a>
+                            </div>
+                        </div>
                     </div>
-                <!-- } -->
+                    <% }) %>
             </div>
                 
         </div>

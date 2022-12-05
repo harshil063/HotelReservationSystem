@@ -1,0 +1,96 @@
+
+<%- include('../partials/Customer/header.ejs') %>
+
+<div class="container">
+    <div class="col-lg-12 col-md-6 mb-5">
+        <h1 class=" mb-4 mt-3 " style="text-align: center;">Book a Room</h1>
+       
+        <p class="alert alert-danger" style="width:280px;"></p>
+        
+        
+        <form action="" method="post">
+            <div class="row">
+
+            <div class="col-sm-6 border">
+                <div><h3 style="text-align: center;">Booking details</h1></div>
+            Arrival Date: <div class="form-group">
+                <input type="date"  class="form-control border" id="arrivaldate" name="arrival_date" onchange="cal()" required="required" />
+             </div>
+            Departure date: <div class="form-group">
+                <input type="date" class="form-control  border" id="departuredate" name="departure_date" onchange="cal()" required="required" />
+             </div>
+            No of Room:<div class="form-group">
+
+                <select name="no_of_room" class="form-control border" id="noofroom">
+                   
+                    <option disabled selected>Number of Room</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+             </div>
+
+             No of Adult:<div class="form-group">
+
+                <select name="no_of_adult" class="form-control border" id="dog-names">
+                    <option disabled selected>Number of Adult</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+             </div>
+             <p id="result"></p>
+            Total Amount :<div class="form-group">
+                <input type="text" class="form-control border" id="total_amount" name="total_amount" placeholder="total amount" required="required" />
+            </div>
+            Room type:<div class="form-group">
+                <input type="text" class="form-control border" id="rt"  name="room_type" value="<%= data.room_type %>" placeholder="room type" required="required" />
+             </div>
+            </div>
+
+            <input type="hidden" class="form-control border" id="roomprice"  name="room_type" value="<%= data.room_price %>"  required="required" />
+
+            <div class="col-sm-6 border">
+                <div><h3 style="text-align: center;">Persnol details</h1></div>
+             Full Name:<div class="form-group">
+              <input type="text" class="form-control border"  name="fullname" value="<%= custdata.fname %> <%= custdata.lname %>"  required="required" />
+            </div>
+             Contact No:<div class="form-group">
+                <input type="text" class="form-control border"  name="cust_contact" value="<%= custdata.contact %>" placeholder="contact no" required="required" />
+            </div>
+            Email: <div class="form-group">
+                <input type="text" class="form-control border"  name="cust_email" value="<%= custdata.email %>" placeholder="email" required="required" />
+            </div>
+
+            <div>
+                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Book Now</button>
+            </div>
+        </div>
+            
+        </div>
+        </form>
+    </div>
+</div>
+    
+<script>
+    
+
+
+
+        function GetDays() {
+            var arrivaldt = new Date(document.getElementById("arrivaldate").value);
+            var departuredt = new Date(document.getElementById("departuredate").value);
+            return parseInt((departuredt - arrivaldt) / (24 * 3600 * 1000));
+        }
+
+        function cal() {
+            if (document.getElementById("departuredate")) {
+                var room_price = document.getElementById("roomprice").value;
+                document.getElementById("total_amount").value = GetDays() * room_price;
+            }
+        }
+   </script> 
+<!-- <script>
+    $("#rt").prop("disabled", false); var text = $("#rt").val(); $("#rt").prop("disabled", true)
+</script> -->
+<%- include('../partials/Customer/footer.ejs') %>
