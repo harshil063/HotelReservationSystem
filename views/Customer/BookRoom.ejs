@@ -21,7 +21,7 @@
              </div>
             No of Room:<div class="form-group">
 
-                <select name="no_of_room" class="form-control border" id="noofroom">
+                <select name="no_of_room" class="form-control border" onchange="cal()" id="no_of_room">
                    
                     <option disabled selected>Number of Room</option>
                     <option value="1">1</option>
@@ -48,7 +48,7 @@
              </div>
             </div>
 
-            <input type="hidden" class="form-control border" id="roomprice"  name="room_type" value="<%= data.room_price %>"  required="required" />
+            <input type="hidden" class="form-control border" id="roomprice"  name="room_price" value="<%= data.room_price %>"  required="required" />
 
             <div class="col-sm-6 border">
                 <div><h3 style="text-align: center;">Persnol details</h1></div>
@@ -86,7 +86,8 @@
         function cal() {
             if (document.getElementById("departuredate")) {
                 var room_price = document.getElementById("roomprice").value;
-                document.getElementById("total_amount").value = GetDays() * room_price;
+                var no_of_room  = document.getElementById("no_of_room").value;
+                document.getElementById("total_amount").value = GetDays() * room_price * no_of_room;
             }
         }
    </script> 

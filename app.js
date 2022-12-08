@@ -3,10 +3,13 @@ import connectDB from './db/connectdb.js';
 import {join} from 'path';
 import custweb from "./routes/Customer/web.js";
 import adminweb from "./routes/Admin/web.js";
+import roomModel from './models/Room.js';
 import multer from 'multer';
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import CustomerModel from './models/customer.js';
+import RoomBookModel from './models/RoomBook.js';
 
 const app = express()
 const port = process.env.PORT || '3000'
@@ -53,7 +56,59 @@ app.listen(port,()=>{
 })
 
 app.use(cookieParser());
-// roomModel.aggregate([{
+
+
+var cmnemail = []
+
+// CustomerModel.find({email:'hk@gmail.com'})
+//         .then(data=>{
+//             console.log("customer email");
+//             console.log(data);
+
+//             data.map((d,k)=>{
+//                 cmnemail.push(d.email);
+//             })
+
+//             RoomBookModel.find({cust_email:{$in: cmnemail}})
+//             .then(data=>{
+//                 console.log("room book with hk@gmail.com");
+//                 console.log(data);
+//             }).catch(error=>{
+//                 console.log(error);
+//             })
+//         })
+
+
+// RoomBookModel.find({email:'hk@gmail.com'})
+//         .then(data=>{
+//             console.log("room book email");
+//             console.log(data);
+
+//             data.map((d,k)=>{
+//                 cmnemail.push(d.cust_email);
+//             })
+//             console.log(cmnemail);
+//             let i=0;
+//             cmnemail.forEach((dt)=>{
+//                 CustomerModel.find({email:{$in: cmnemail[i]}})
+                
+
+//             .then(data=>{
+//                 console.log("customer details of hk@gmail.com");
+//                 console.log(data);
+                
+//             }).catch(error=>{
+//                 console.log(error);
+//             })
+//             i++;
+//             });
+            
+//         })
+
+
+
+
+// const test = roomModel.aggregate([{
 //     $lookup:    
 //         {
 //             from : 'roomtypes',
@@ -62,6 +117,7 @@ app.use(cookieParser());
 //             as : 'hotel'
 //         }
 // }])
+// console.log(test.room_type);
 
 // db.rooms.aggregate([{
 //     $lookup:    

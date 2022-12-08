@@ -28,4 +28,10 @@ router.post('/DeleteRoomtype/:id',AdminController.DeleteRoomtype)
 router.get('/AddRoom',AdminController.AddRoom)
 router.post('/AddRoom',AdminController.CreateRoomDoc)
 router.get('/ViewRoom',AdminController.ViewRoom)
+
+router.get('/viewreservation',AdminController.ViewReservation)
+
+
+router.get('/test',AdminController.test)
+
 export default router;
