@@ -13,40 +13,39 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <tr>
                                     <th>Sr No.</th>
-                                    <th>Arrival Date</th>
-                                    <th>Departure Date</th>
-                                    <th>No of Room</th>
-                                    <th>No of adult</th>
-                                    <th>Room type</th>
-                                    <th>Guest Contact</th>
-                                    <th>Guest Email</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>AadharCard Number</th>
+                                    <th>City</th>
+                                    <th>Pincode</th>
                                 </tr>
 
                                 <% var i = 1 %>
                                 <% data.forEach((item)=>{ %>
                                     <tr>
                                         <td><%= i++ %></td>
-                                        <td><%= item.arrival_date %></td>
-                                        <td><%= item.departure_date %></td>
-                                        <td><%= item.no_of_room %></td>
-                                        <td><%= item.no_of_adult  %></td>
-                                        <td><%= item.room_type %></td>
-                                        <td><%= item.cust_contact%></td>
-                                        <td><%= item.cust_email %></td>
-                                        
+                                        <td><%= item.fname %></td>
+                                        <td><%= item.lname %></td>
+                                        <td><%= item.email %></td>
+                                        <td><%= item.contact  %></td>
+                                        <td><%= item.aadharcardno %></td>
+                                        <td><%= item.city%></td>
+                                        <td><%= item.pincode %></td>
                                     </tr>
                                 <% }) %>
 
                                 <tfoot>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Arrival Date</th>
-                                        <th>Departure Date</th>
-                                        <th>No of Room</th>
-                                        <th>No of adult</th>
-                                        <th>Room type</th>
-                                        <th>Guest Contact</th>
-                                        <th>Guest Email</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Contact</th>
+                                        <th>AadharCard Number</th>
+                                        <th>City</th>
+                                        <th>Pincode</th>
                                     </tr>
                                 </tfoot>
                             </table>

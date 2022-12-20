@@ -51,6 +51,7 @@ class CustomerController{
     }
     static verifyLogin = async(req,res)=>{
         try{    
+            
             const {email,password} = req.body
             const result = await CustomerModel.findOne({email:email})
             if(result != null){
@@ -76,11 +77,24 @@ class CustomerController{
         }
     }
 
+    static logout = async(req,res)=>{
+        try{
+            req.session.destroy();
+            res.render("Customer/login");
+        }catch(error){
+            console.log(error);
+        }
+    }
+
     static ViewRoom = async (req,res,next)=>{
         try{
+            if(typeof req.session.userid == "undefined")
+            {
+                res.redirect("/Customer/login")
+            }
             const result = await roomtypeModel.find()
-            
             res.render("Customer/ViewRoom",{data:result})
+            
         }
         catch(error){
             console.log(error);
@@ -89,14 +103,16 @@ class CustomerController{
 
     static BookRoom = async(req,res,next)=>{
         try{
+            if(typeof req.session.userid == "undefined"){
+                res.redirect("/Customer/login")
+            }
             const roomtype = req.params.roomtype;
             const result = await roomtypeModel.findOne({room_type:roomtype});
 
             const custresult = await CustomerModel.findOne({email:req.session.userid});
-            console.log(custresult);
-            console.log(result);
-            res.render("Customer/BookRoom",{data:result,custdata:custresult})
-            // res.render("Customer/BookRoom")
+            const roomresult = await roomModel.findOne({room_type:roomtype})
+            
+            res.render("Customer/BookRoom",{data:result,custdata:custresult,roomdata:roomresult})
         }
         catch(error){
             console.log(error);
@@ -104,19 +120,61 @@ class CustomerController{
     }
     static CreateBookRoomDoc = async(req,res,next)=>{
         try{
-            const doc = new RoomBookModel({
-                arrival_date: req.body.arrival_date,
-                departure_date: req.body.departure_date,
-                no_of_room: req.body.no_of_room,
-                no_of_adult: req.body.no_of_adult,
-                total_amount: req.body.total_amount,
-                booking_date: req.body.booking_date,
-                room_type: req.body.room_type,
-                cust_contact: req.body.cust_contact,
-                cust_email: req.body.cust_email,
-            })
-            await doc.save()
-            res.redirect('/Customer/viewRoom')
+            if(typeof req.session.userid == "undefined"){
+                res.redirect("/Customer/login")
+            }
+            const rm = await roomModel.findOne({room_type:req.params.roomtype})
+            console.log(rm._id);
+                const doc = new RoomBookModel({
+                    arrival_date: req.body.arrival_date,
+                    departure_date: req.body.departure_date,
+                    no_of_room: req.body.no_of_room,
+                    no_of_adult: req.body.no_of_adult,
+                    total_amount: req.body.total_amount,
+                    booking_date: req.body.booking_date,
+                    room_type: req.body.room_type,
+                    cust_contact: req.body.cust_contact,
+                    cust_email: req.body.cust_email,
+                    
+                })
+
+                const updqty = await roomModel.findOneAndUpdate({_id:rm._id},{$set:{no_of_room:rm.no_of_room-req.body.no_of_room}})
+                console.log(updqty);
+                var resid;
+                await doc.save(function(err,room){
+                    resid = room._id;
+                    console.log("inside"+room);
+                    res.redirect(`/Customer/receipt/${resid}`);
+                    });
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    static receipt = async(req,res)=>{
+        try{
+            if(typeof req.session.userid == "undefined"){
+                res.redirect("/Customer/login")
+            }
+            console.log(req.params.bookroomid);
+            const roombookresult = await RoomBookModel.findById(req.params.bookroomid);
+            console.log(roombookresult);
+            const custresult = await CustomerModel.findOne({email:roombookresult.cust_email});
+            console.log(custresult);
+            res.render("Customer/receipt",{roombookdata:roombookresult,custdata:custresult})
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    static cust_reservation = async(req,res)=>{
+        try{
+            if(typeof req.session.userid == "undefined"){
+                res.redirect("/Customer/login")
+            }
+            const roombookresult = await RoomBookModel.find({cust_email:req.session.userid});
+            console.log(roombookresult);
+            res.render("Customer/reservation",{roombookdata:roombookresult});
         }catch(error){
             console.log(error);
         }

@@ -34,6 +34,10 @@ app.use(session({
     store:sessionStorage
 }))
 
+// app.use(function(req, res, next) {
+//     res.locals.userid = req.session.userid;
+//     next();
+//   });
 // static files
 app.use(express.static(join(process.cwd(),"public")))
 

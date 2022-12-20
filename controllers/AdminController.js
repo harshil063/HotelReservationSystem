@@ -124,7 +124,14 @@ class AdminController{
         }
     }
 
-
+    static ViewCustomer = async(req,res)=>{
+        try{
+            const result = await CustomerModel.find()
+            res.render("Admin/ViewCustomer",{data:result})
+        }catch(error){
+            console.log(error);
+        }
+    }
 
 
 
@@ -195,35 +202,6 @@ class AdminController{
 
 
 
-    
-    static test = async (req,res)=>{
-        var cmnemail = []
-        RoomBookModel.find()
-        .then(data=>{
-            console.log("room book email");
-            console.log(data);
-
-            data.map((d,k)=>{
-                cmnemail.push(d.cust_email);
-            })
-            console.log(cmnemail);
-            let i=0;
-            cmnemail.forEach((dt)=>{
-                CustomerModel.find({email:{$in: cmnemail[0]}})
-                
-
-            .then(data=>{
-                console.log("customer details of ");
-                console.log(data);
-                res.end("test");
-            }).catch(error=>{
-                console.log(error);
-            })
-            i++;
-            });
-            
-        })
-    }
 
 
 

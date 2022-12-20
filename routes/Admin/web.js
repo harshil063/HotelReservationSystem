@@ -30,8 +30,7 @@ router.post('/AddRoom',AdminController.CreateRoomDoc)
 router.get('/ViewRoom',AdminController.ViewRoom)
 
 router.get('/viewreservation',AdminController.ViewReservation)
+router.get('/ViewGuest',AdminController.ViewCustomer)
 
-
-router.get('/test',AdminController.test)
 
 export default router;

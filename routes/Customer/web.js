@@ -10,4 +10,7 @@ router.get('/ViewRoom',CustomerController.ViewRoom)
 router.get('/BookRoom/:roomtype',CustomerController.BookRoom)
 router.get('/BookRoom',CustomerController.BookRoom)
 router.post('/BookRoom/:roomtype',CustomerController.CreateBookRoomDoc)
+router.get('/receipt/:bookroomid',CustomerController.receipt)
+router.get('/reservation',CustomerController.cust_reservation)
+router.get('/logout',CustomerController.logout)
 export default router;

@@ -1,0 +1,148 @@
+<%- include('../partials/Customer/header.ejs') %>
+
+
+
+<div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding">
+    
+    <div class="card">
+        <div  style="float:right; text-align: right;">
+            <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i
+                class="far fa-file-pdf text-danger"></i> Export</a>
+            <button class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark" onclick="PrintDiv()"> <i
+                class="fas fa-print text-primary" onclick="PrintDiv()" ></i> Print</button>
+        </div>
+        <div id="printdivcontent">
+    <div id="printdivcontent" class="card-header p-4">
+        
+        <a class="pt-2 d-inline-block"  data-abc="true">www.lamariott.com</a>
+        <div class="float-right"> <h3 class="mb-0">Invoice Id: <%= roombookdata._id %></h3>
+        Date: <div id="date"></div></div>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+        <div class="col-sm-6">
+            <h5 class="mb-3">From:</h5>
+            <h3 class="text-dark mb-1">LA-MARIOTT Hotel</h3>
+            <div>123 Street, </div>
+            <div>Sikeston,New Delhi 110034</div>
+            <div>Email: contact@lamariott.com</div>
+            <div>Phone: +91 9897 989 989</div>
+                
+        </div>
+        
+        </div>
+        <hr>
+        <div class="table-responsive-sm">
+            <div class="center" style="text-align: center;">
+                <h5 class="mb-3">Persnol Details:</h5>
+                <div>Name: <%= custdata.fname %> <%= custdata.lname %></div>
+                <div>Email: <%= roombookdata.cust_email %></div>
+                <div>Contact: <%= roombookdata.cust_contact %></div>
+            </div>
+            <hr>
+            <h5 class="mb-3" style="text-align: center;">Booking Details </h5>
+            <table class="table  table-borderless">
+                
+                <tbody>
+                <tr>
+                    <td class="center " style="font-weight: bold;">Arrival Date :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.arrival_date %></td>
+                </tr>
+                <tr>
+                    <td class="center" style="font-weight: bold;">Departure Date :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.departure_date %></td>
+                </tr>
+                <tr>
+                    <td class="center" style="font-weight: bold;">Room Type :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.room_type %></td>
+                </tr>
+                <tr>
+                    <td class="center" style="font-weight: bold;">Number Of Room :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.no_of_room %></td>
+                </tr>
+                <tr>
+                    <td class="center" style="font-weight: bold;">Number Of Adult :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.no_of_adult %></td>
+                </tr>
+                <tr>
+                    <td class="center" style="font-weight: bold;">Total Amount :</td>
+                    <td class="center" style="text-align: right;"><%= roombookdata.total_amount %></td>
+                </tr>
+                
+                
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+        <div class="col-lg-4 col-sm-5">
+        </div>
+        <div class="col-lg-4 col-sm-5 ml-auto">
+        <table class="table table-clear">
+        <tbody>
+        <!-- <tr>
+        <td class="left">
+        <strong class="text-dark">Subtotal</strong>
+        </td>
+        <td class="right">&#8377; <%= roombookdata.total_amount %></td>
+        </tr> -->
+        <!-- <tr>
+        <td class="left">
+        <strong class="text-dark">Discount </strong>
+        </td>
+        <td class="right">0</td>
+        </tr>
+        <tr>
+        
+        <td class="right">$2,304,00</td>
+        </tr> -->
+        <tr>    
+        <td class="left">
+        <strong class="text-dark">Total</strong>
+        </td>
+        <td class="right">
+        <strong class="text-dark">&#8377; <%= roombookdata.total_amount %></strong>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+    <div class="card-footer bg-white">
+    <p class="mb-0">BBBootstrap.com, Sounth Block, New delhi, 110034</p>
+    </div>
+    </div>
+</div>
+    </div>
+
+
+
+<script>
+    n =  new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
+</script>
+<script type="text/javascript">  
+    function PrintDiv() 
+   {  
+       var divContents = document.getElementById("printdivcontent").innerHTML;  
+       var printWindow = window.open('', '', 'height=200,width=400');  
+       printWindow.document.write('<html><head><title>Print DIV Content</title>');  
+       printWindow.document.write('</head><body >');  
+       printWindow.document.write(divContents);  
+       printWindow.document.write('</body></html>');  
+       printWindow.document.close();  
+       printWindow.print();  
+    }  
+</script>  
+
+
+
+
+
+
+
+
+<%- include('../partials/Customer/footer.ejs') %>

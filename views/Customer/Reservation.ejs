@@ -1,0 +1,58 @@
+<%- include('../partials/Customer/header.ejs') %>
+
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">All Room Categories</h3>
+                    </div>
+                    
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <tr>
+                                    <th>Sr. No.</th>
+                                    <th>Room Type</th>
+                                    
+                                    <th>Details</th>
+                                </tr>
+
+                                <% var i = 1 %>
+                                <% roombookdata.forEach((item)=>{ %>
+                                    <tr>
+                                        <td><%= i++ %></td>
+                                        
+                                        
+                                        <td><%= item.room_type %></td>
+                                        <td>
+                                           <a href="/Customer/receipt/<%= item._id %>"><i class="fas fa-eye"></i> View Receipt</a>
+                                            
+                                        </td>
+                                    </tr>
+                                <% }) %>
+
+                                <tfoot>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Room type</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    <!-- /.card-body -->
+                </div>
+                
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+
+<%- include('../partials/Customer/footer.ejs') %>
